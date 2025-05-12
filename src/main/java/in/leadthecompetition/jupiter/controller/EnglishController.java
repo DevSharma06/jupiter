@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import in.leadthecompetition.jupiter.model.ApiResponse;
-import in.leadthecompetition.jupiter.model.EnglishCategory;
-import in.leadthecompetition.jupiter.model.EnglishDTO;
+import in.leadthecompetition.jupiter.model.english.EnglishCategory;
+import in.leadthecompetition.jupiter.model.english.EnglishQuestion;
 import in.leadthecompetition.jupiter.service.EnglishService;
 
 @RestController
@@ -29,35 +29,35 @@ public class EnglishController {
 	}
 
 	@PostMapping("/addQuestion")
-	public EnglishDTO insertQuestion(@RequestBody EnglishDTO englishDTO) {
+	public EnglishQuestion insertQuestion(@RequestBody EnglishQuestion englishDTO) {
 		return service.insertOrUpdateQuestion(englishDTO);
 	}
 
 	@DeleteMapping("/deleteQuestion/{id}")
-	public ApiResponse<EnglishDTO> deleteQuestion(@PathVariable Long id) {
-		Optional<EnglishDTO> optionalQuestion = service.getQuestionByID(id);
+	public ApiResponse<EnglishQuestion> deleteQuestion(@PathVariable Long id) {
+		Optional<EnglishQuestion> optionalQuestion = service.getQuestionByID(id);
 		if (optionalQuestion.isPresent()) {
 			service.deleteQuestion(id);
-			return new ApiResponse<EnglishDTO>(true, "Question deleted", optionalQuestion.get(), LocalDateTime.now());
+			return new ApiResponse<EnglishQuestion>(true, "Question deleted", optionalQuestion.get(), LocalDateTime.now());
 		} else {
-			return new ApiResponse<EnglishDTO>(false, "Question not found", null, "NOT_FOUND", LocalDateTime.now());
+			return new ApiResponse<EnglishQuestion>(false, "Question not found", null, "NOT_FOUND", LocalDateTime.now());
 		}
 
 	}
 
 	@GetMapping("/getQuestion/{id}")
-	public ApiResponse<EnglishDTO> getQuestion(@PathVariable Long id) {
-		Optional<EnglishDTO> optionalQuestion = service.getQuestionByID(id);
+	public ApiResponse<EnglishQuestion> getQuestion(@PathVariable Long id) {
+		Optional<EnglishQuestion> optionalQuestion = service.getQuestionByID(id);
 		if (optionalQuestion.isPresent()) {
-			return new ApiResponse<EnglishDTO>(true, "Question found", optionalQuestion.get(), LocalDateTime.now());
+			return new ApiResponse<EnglishQuestion>(true, "Question found", optionalQuestion.get(), LocalDateTime.now());
 		} else {
-			return new ApiResponse<EnglishDTO>(false, "Question not found", null, "NOT_FOUND", LocalDateTime.now());
+			return new ApiResponse<EnglishQuestion>(false, "Question not found", null, "NOT_FOUND", LocalDateTime.now());
 		}
 
 	}
 
 	@GetMapping("/getAllQuestions")
-	public List<EnglishDTO> getAllQuestions() {
+	public List<EnglishQuestion> getAllQuestions() {
 		return service.getAllQuestions();
 	}
 
