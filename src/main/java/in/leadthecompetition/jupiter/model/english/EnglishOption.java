@@ -1,4 +1,4 @@
-package in.leadthecompetition.jupiter.model;
+package in.leadthecompetition.jupiter.model.english;
 
 import java.time.LocalDateTime;
 
@@ -35,7 +35,7 @@ public class EnglishOption {
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "questionId", referencedColumnName = "id")
 	@JsonIgnore
-	private EnglishDTO english;
+	private EnglishQuestion english;
 
 	@CreatedDate
 	@Column(updatable = false)
@@ -49,7 +49,7 @@ public class EnglishOption {
 		super();
 	}
 
-	public EnglishOption(Long id, String optionText, boolean isCorrect, EnglishDTO english, LocalDateTime createdAt,
+	public EnglishOption(Long id, String optionText, boolean isCorrect, EnglishQuestion english, LocalDateTime createdAt,
 			LocalDateTime updatedAt) {
 		super();
 		this.id = id;
@@ -100,11 +100,11 @@ public class EnglishOption {
 		this.updatedAt = updatedAt;
 	}
 
-	public EnglishDTO getEnglish() {
+	public EnglishQuestion getEnglish() {
 		return english;
 	}
 
-	public void setEnglish(EnglishDTO english) {
+	public void setEnglish(EnglishQuestion english) {
 		this.english = english;
 	}
 

@@ -1,23 +1,18 @@
-package in.leadthecompetition.jupiter.model;
+package in.leadthecompetition.jupiter.model.base;
 
 import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.MappedSuperclass;
 
-@Entity
-@Table(name = "english_categories")
-@EntityListeners(AuditingEntityListener.class)
-public class EnglishCategory {
+@MappedSuperclass
+public class BaseCategory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -35,11 +30,21 @@ public class EnglishCategory {
 	@LastModifiedDate
 	private LocalDateTime updatedAt;
 
-	public Long getCategoryID() {
+	public BaseCategory(Long id, String categoryName, int questionCount, LocalDateTime createdAt,
+			LocalDateTime updatedAt) {
+		super();
+		this.id = id;
+		this.categoryName = categoryName;
+		this.questionCount = questionCount;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+	}
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setCategoryID(Long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -1,35 +1,29 @@
-package in.leadthecompetition.jupiter.model;
+package in.leadthecompetition.jupiter.model.base;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import jakarta.persistence.CascadeType;
+import in.leadthecompetition.jupiter.model.Difficulty;
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.MappedSuperclass;
 
-@Entity
-@Table(name = "english")
-@EntityListeners(AuditingEntityListener.class)
-public class EnglishDTO {
+@MappedSuperclass
+public class BaseQuestion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(unique = true)
+	@Column(unique = true, length = 1000)
 	private String questionText;
 
+	@Column(length = 1000)
 	private String explanation;
 
 	@Enumerated(EnumType.STRING)
@@ -39,9 +33,6 @@ public class EnglishDTO {
 
 	private boolean isActive;
 
-	@OneToMany(mappedBy = "english", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<EnglishOption> options;
-
 	@CreatedDate
 	@Column(updatable = false)
 	private LocalDateTime createdAt;
@@ -49,12 +40,12 @@ public class EnglishDTO {
 	@LastModifiedDate
 	private LocalDateTime updatedAt;
 
-	public EnglishDTO() {
+	public BaseQuestion() {
 		super();
 	}
 
-	public EnglishDTO(Long id, String questionText, String explanation, Difficulty difficulty, int categoryID,
-			boolean isActive, List<EnglishOption> options, LocalDateTime createdAt, LocalDateTime updatedAt) {
+	public BaseQuestion(Long id, String questionText, String explanation, Difficulty difficulty, int categoryID,
+			boolean isActive, LocalDateTime createdAt, LocalDateTime updatedAt) {
 		super();
 		this.id = id;
 		this.questionText = questionText;
@@ -62,7 +53,6 @@ public class EnglishDTO {
 		this.difficulty = difficulty;
 		this.categoryID = categoryID;
 		this.isActive = isActive;
-		this.options = options;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
@@ -131,19 +121,4 @@ public class EnglishDTO {
 		this.updatedAt = updatedAt;
 	}
 
-	public List<EnglishOption> getOptions() {
-		return options;
-	}
-
-	public void setOptions(List<EnglishOption> options) {
-		this.options = options;
-		if (options != null) {
-			options.forEach(option -> option.setEnglish(this));
-		}
-	}
-
-}
-
-enum Difficulty {
-	EASY, MEDIUM, HARD
 }
