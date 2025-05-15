@@ -30,6 +30,10 @@ public class BaseCategory {
 	@LastModifiedDate
 	private LocalDateTime updatedAt;
 
+	public BaseCategory() {
+		super();
+	}
+
 	public BaseCategory(Long id, String categoryName, int questionCount, LocalDateTime createdAt,
 			LocalDateTime updatedAt) {
 		super();

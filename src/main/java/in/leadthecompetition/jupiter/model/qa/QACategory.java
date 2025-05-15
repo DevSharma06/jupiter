@@ -14,6 +14,10 @@ import jakarta.persistence.Table;
 @EntityListeners(AuditingEntityListener.class)
 public class QACategory extends BaseCategory {
 
+	public QACategory() {
+		super();
+	}
+
 	public QACategory(Long id, String categoryName, int questionCount, LocalDateTime createdAt,
 			LocalDateTime updatedAt) {
 		super(id, categoryName, questionCount, createdAt, updatedAt);

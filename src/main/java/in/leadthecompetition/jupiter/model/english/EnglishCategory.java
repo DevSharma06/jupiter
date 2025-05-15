@@ -13,6 +13,11 @@ import jakarta.persistence.Table;
 @Table(name = "english_categories")
 @EntityListeners(AuditingEntityListener.class)
 public class EnglishCategory extends BaseCategory {
+
+	public EnglishCategory() {
+		super();
+	}
+
 	public EnglishCategory(Long id, String categoryName, int questionCount, LocalDateTime createdAt,
 			LocalDateTime updatedAt) {
 		super(id, categoryName, questionCount, createdAt, updatedAt);
