@@ -19,4 +19,11 @@ public class GACategory extends BaseCategory {
 		super(id, categoryName, questionCount, createdAt, updatedAt);
 	}
 
+	public GACategory(Long id, String categoryName, int questionCount) {
+		super(id, categoryName, questionCount);
+	}
+
+	public GACategory(String categoryName, int questionCount) {
+		super(categoryName, questionCount);
+	}
 }

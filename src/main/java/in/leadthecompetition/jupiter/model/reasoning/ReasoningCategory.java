@@ -19,4 +19,12 @@ public class ReasoningCategory extends BaseCategory {
 		super(id, categoryName, questionCount, createdAt, updatedAt);
 	}
 
+	public ReasoningCategory(Long id, String categoryName, int questionCount) {
+		super(id, categoryName, questionCount);
+	}
+
+	public ReasoningCategory(String categoryName, int questionCount) {
+		super(categoryName, questionCount);
+	}
+
 }

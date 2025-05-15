@@ -19,4 +19,11 @@ public class QACategory extends BaseCategory {
 		super(id, categoryName, questionCount, createdAt, updatedAt);
 	}
 
+	public QACategory(Long id, String categoryName, int questionCount) {
+		super(id, categoryName, questionCount);
+	}
+
+	public QACategory(String categoryName, int questionCount) {
+		super(categoryName, questionCount);
+	}
 }

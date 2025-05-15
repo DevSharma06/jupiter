@@ -43,7 +43,7 @@ VALUES
 (4, 'Profit and Loss', CURRENT_TIMESTAMP, 2, CURRENT_TIMESTAMP),
 (5, 'Time and Distance', CURRENT_TIMESTAMP, 2, CURRENT_TIMESTAMP),
 (6, 'Interest', CURRENT_TIMESTAMP, 2, CURRENT_TIMESTAMP),
-(7, 'Alzebra', CURRENT_TIMESTAMP, 5, CURRENT_TIMESTAMP),
+(7, 'Algebra', CURRENT_TIMESTAMP, 5, CURRENT_TIMESTAMP),
 (8, 'Triangles', CURRENT_TIMESTAMP, 2, CURRENT_TIMESTAMP),
 (9, 'Circles', CURRENT_TIMESTAMP, 2, CURRENT_TIMESTAMP),
 (10, 'Trigonometry', CURRENT_TIMESTAMP, 2, CURRENT_TIMESTAMP),
@@ -52,7 +52,7 @@ VALUES
 (13, 'Solids', CURRENT_TIMESTAMP, 2, CURRENT_TIMESTAMP);
 
 -- GA Categories
-INSERT INTO qa_categories (id, category_name, created_at, question_count, updated_at)
+INSERT INTO ga_categories (id, category_name, created_at, question_count, updated_at)
 VALUES 
 (1, 'Awards', CURRENT_TIMESTAMP, 1, CURRENT_TIMESTAMP),
 (2, 'Anatomy', CURRENT_TIMESTAMP, 1, CURRENT_TIMESTAMP),
@@ -73,3 +73,7 @@ VALUES
 (17, 'States', CURRENT_TIMESTAMP, 1, CURRENT_TIMESTAMP),
 (18, 'Miscellaneous', CURRENT_TIMESTAMP, 3, CURRENT_TIMESTAMP),
 (19, 'Current Affairs', CURRENT_TIMESTAMP, 3, CURRENT_TIMESTAMP);
+
+-- ROLES
+
+INSERT INTO roles(name) VALUES ('ROLE_USER'), ('ROLE_MODERATOR'), ('ROLE_ADMIN');
