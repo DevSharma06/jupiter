@@ -32,8 +32,6 @@ import in.leadthecompetition.jupiter.security.services.UserDetailsImpl;
 import jakarta.validation.Valid;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
-//for Angular Client (withCredentials)
-//@CrossOrigin(origins = "http://localhost:8081", maxAge = 3600, allowCredentials="true")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -121,8 +119,8 @@ public class AuthController {
 //		return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString()).body(
 //				new UserInfoResponse(userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), roles));
 
-			UserInfoResponse userInfoResponse = new UserInfoResponse(null, userDetails.getUsername(),
-					userDetails.getEmail(), roles, jwtToken, jwtUtils.getExpirationTime());
+			UserInfoResponse userInfoResponse = new UserInfoResponse(userDetails.getUsername(), userDetails.getEmail(),
+					roles, jwtToken, jwtUtils.getExpirationTime());
 
 			return ResponseEntity.ok(userInfoResponse);
 		} catch (Exception e) {

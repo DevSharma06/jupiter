@@ -3,16 +3,15 @@ package in.leadthecompetition.jupiter.model.payload.response;
 import java.util.List;
 
 public class UserInfoResponse {
-	private Long id;
 	private String username;
 	private String email;
 	private List<String> roles;
 	private String token;
 	private long expiresIn;
 
-	public UserInfoResponse(Long id, String username, String email, List<String> roles, String token, long expiresIn) {
+	public UserInfoResponse(String username, String email, List<String> roles, String token, long expiresIn) {
 		super();
-		this.id = id;
+
 		this.username = username;
 		this.email = email;
 		this.roles = roles;
@@ -20,19 +19,11 @@ public class UserInfoResponse {
 		this.expiresIn = expiresIn;
 	}
 
-	public UserInfoResponse(Long id, String username, String email, List<String> roles) {
-		this.id = id;
+	public UserInfoResponse(String username, String email, List<String> roles) {
+
 		this.username = username;
 		this.email = email;
 		this.roles = roles;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getEmail() {
