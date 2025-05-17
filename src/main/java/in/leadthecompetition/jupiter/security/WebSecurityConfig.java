@@ -28,12 +28,8 @@ import in.leadthecompetition.jupiter.security.jwt.AuthTokenFilter;
 import in.leadthecompetition.jupiter.security.services.UserDetailsServiceImpl;
 
 @Configuration
-//@EnableWebSecurity
 @EnableMethodSecurity
-//(securedEnabled = true,
-//jsr250Enabled = true,
-//prePostEnabled = true) // by default
-public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig {
 
 	@Autowired
 	UserDetailsServiceImpl userDetailsService;
@@ -46,11 +42,6 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
 		return new AuthTokenFilter();
 	}
 
-//  @Override
-//  public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-//    authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-//  }
-
 	@Bean
 	public DaoAuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -61,12 +52,6 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
 		return authProvider;
 	}
 
-//  @Bean
-//  @Override
-//  public AuthenticationManager authenticationManagerBean() throws Exception {
-//    return super.authenticationManagerBean();
-//  }
-
 	@Bean
 	public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
 		return authConfig.getAuthenticationManager();
@@ -76,22 +61,6 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-
-//  @Override
-//  protected void configure(HttpSecurity http) throws Exception {
-//    http.cors().and().csrf().disable()
-//      .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-//      .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-//      .authorizeRequests().antMatchers("/api/auth/**").permitAll()
-//      .antMatchers("/api/test/**").permitAll()
-//      .antMatchers(h2ConsolePath + "/**").permitAll()
-//      .anyRequest().authenticated();
-//    
-//    // fix H2 database console: Refused to display ' in a frame because it set 'X-Frame-Options' to 'deny'
-//    http.headers().frameOptions().sameOrigin();
-//
-//    http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-//  }
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
