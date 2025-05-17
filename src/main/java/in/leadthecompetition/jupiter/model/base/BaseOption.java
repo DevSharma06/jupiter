@@ -22,7 +22,7 @@ public class BaseOption {
 	@Column(unique = true, length = 500)
 	private String optionText;
 
-	private boolean isCorrect;
+	private Boolean correct;
 
 	@CreatedDate
 	@Column(updatable = false)
@@ -40,7 +40,7 @@ public class BaseOption {
 		super();
 		this.id = id;
 		this.optionText = optionText;
-		this.isCorrect = isCorrect;
+		this.correct = isCorrect;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
@@ -61,14 +61,6 @@ public class BaseOption {
 		this.optionText = optionText;
 	}
 
-	public boolean isCorrect() {
-		return isCorrect;
-	}
-
-	public void setCorrect(boolean isCorrect) {
-		this.isCorrect = isCorrect;
-	}
-
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
@@ -83,6 +75,14 @@ public class BaseOption {
 
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public Boolean getCorrect() {
+		return correct;
+	}
+
+	public void setCorrect(Boolean correct) {
+		this.correct = correct;
 	}
 
 }

@@ -30,6 +30,10 @@ public class BaseCategory {
 	@LastModifiedDate
 	private LocalDateTime updatedAt;
 
+	public BaseCategory() {
+		super();
+	}
+
 	public BaseCategory(Long id, String categoryName, int questionCount, LocalDateTime createdAt,
 			LocalDateTime updatedAt) {
 		super();
@@ -38,6 +42,23 @@ public class BaseCategory {
 		this.questionCount = questionCount;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
+	}
+
+	public BaseCategory(Long id, String categoryName, int questionCount) {
+		super();
+		this.id = id;
+		this.categoryName = categoryName;
+		this.questionCount = questionCount;
+		this.createdAt = LocalDateTime.now();
+		this.updatedAt = LocalDateTime.now();
+	}
+
+	public BaseCategory(String categoryName, int questionCount) {
+		super();
+		this.categoryName = categoryName;
+		this.questionCount = questionCount;
+		this.createdAt = LocalDateTime.now();
+		this.updatedAt = LocalDateTime.now();
 	}
 
 	public Long getId() {
